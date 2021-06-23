@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>HAPI WEBIINAR</title>
+    <style>
+        @font-face { font-family: Geometos; src: url('./font/GeometosRounded.ttf'); } 
+        @font-face { font-family: MyriadPro; src: url('./font/MyriadProBoldCond.otf');}
+        
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        p { margin: 0;}
+
+        .font-geometos { font-family: Geometos; }
+        .font-myriadPro { font-family: MyriadPro; }
+
+        .color-black { color: rgb(0, 0, 0); }
+        .color-white { color: rgb(255, 255, 255); }
+        .color-gravel { color: rgb(78, 80, 69); }
+        .color-green { color: rgb(10, 89, 41); }
+        .color-navy-blue { color: rgb(0, 93, 186); }
+        .color-cobalt { color: rgb(4, 87, 153); }
+        .color-prussian-blue { color: rgb(8, 48, 107); }
+        .color-half-baked-blue { color: rgb(126, 175, 205); }
+
+        .card {
+            border: 20px solid rgb(126, 175, 205);
+        }
+
+        .form-control {
+            border: 0;
+            border-bottom: 3px solid rgb(8, 48, 107);
+            border-radius: 0;
+        }
+
+        .btn-submit {
+            border: 0;
+            color: black;
+        }
+
+        .btn-forgot {
+            border: 0;
+            border-bottom: 3px solid rgb(8, 48, 107);
+            border-radius: 0;
+            color: black;
+        }
+        
+    </style>
+  </head>
+  <body>
+    <div class="vh-100 vw-100" id="page" style="position: relative; display: none;">
+        <img src="img/LandingPage.png" style="height: 100vh; width: 100vw;" />
+        <div class="row" style="position: absolute; bottom: 0; left: 28vw; ">
+            <a class="mb-2" href="" onclick="enterZoom()" target="_blank">
+                <img class="img" src="img/Enter.png" style="width: 30vw; height: 12vh;" />
+            </a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-lg-5 col-md-8 col-sm-11 col-xs-11">
+          <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="font-geometos color-black">
+                        <p class="card-text" style="font-size: 2.8vw;">WELCOME</p>
+                        <p class="card-text" style="font-size: 2vw;">TO</p>
+                    </div>
+                    <div class="font-myriadPro">
+                        <p class="card-text" style="font-size: 1.83vw;"><span class="color-gravel">HAPI:</span> <span class="color-green">A COMPREHENSIVE</span></p>
+                        <p class="card-text" style="font-size: 1.45vw;"><span class="color-navy-blue">APPROACH TO EVIDENCE-BASED</span></p>
+                        <p class="card-text" style="font-size: 1.45vw;"><span class="color-green">NUTRITION CARE PRACTIVE FOR</span></p>
+                        <p class="card-text" style="font-size: 1.63vw;"><span class="color-cobalt">EFFECTIVE WOUND HEALING</span></p>
+                        <p class="card-text" style="font-size: 0.9vw;"><span class="color-gravel">A multidisciplinary collaborative care for patients</span></p>
+                        <p class="card-text" style="font-size: 0.9vw;"><span class="color-gravel">with pressure injury</span></p>
+                    </div>
+                    <div class="row justify-content-center align-items-center font-geometos">
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-10">
+                                        <input type="text" class="form-control" id="email" placeholder="EMAIL" required />
+                                    </div>
+                                    <div class="col-1" style="text-align: start">   
+                                        <label id="email_required" style="color: red; display: none">*</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-10">
+                                        <input type="text" class="form-control" id="password" placeholder="PASSCODE" required />
+                                    </div>
+                                    <div class="col-1" style="text-align: start">
+                                        <label id="password_required" style="color: red; display: none">*</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3 text-center">
+                        <button class="btn btn-outline-secondary btn-submit" type="button" id="submit" onclick="submit()">
+                            <span class="font-geometos" style="font-size: 1.63vw;">SUBMIT</span>
+                        </button>
+                    </div>
+                    <div class="col-12 mt-3 text-center">
+                        <button class="btn btn-outline-secondary btn-forgot" type="button" id="forgot" onclick="forgotPassword()">
+                            <span class="font-geometos">Forgot your email / password?</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script>
+        var status = "";
+        var jsId = document.cookie.match(/PHPSESSID=[^;]+/);
+
+        if(jsId != null) {
+            if (jsId instanceof Array)
+                jsId = jsId[0].substring(10);
+            else
+                jsId = jsId.substring(10);
+        }
+
+        function submit() {
+            var user_name = true,
+                pword = true;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (!document.getElementById("email").validity.valid) {
+                document.getElementById("email_required").style.display = "inline";
+                user_name = false;
+            } else {
+                document.getElementById("email_required").style.display = "none";
+                user_name = true;
+            }
+
+            if (!document.getElementById("password").validity.valid) {
+                document.getElementById("password_required").style.display = "inline";
+                pword = false;
+            } else {
+                document.getElementById("password_required").style.display = "none";
+                pword = true;
+            }
+
+            if (user_name && pword) {
+                var data = email + "\t" + password;
+
+                $.ajax({
+                    url: "https://hapiwebinar.tk/user.php",
+                    type: "POST",
+                    data: {
+                        email: email,
+                        password: password,
+                    },
+                    success: function (msg) {
+                        if (msg == "1") {
+                            document.getElementById("email").value = "";
+                            document.getElementById("password").value = "";
+                            localStorage.setItem("email", btoa(email));
+                            localStorage.setItem("code", btoa(password));
+                            sessionStorage.setItem("email", btoa(email));
+                            sessionStorage.setItem("code", btoa(password));
+                            document.getElementById("page").style.display = "block";
+                        }
+                        else if (msg == "0") {
+                            alert("Wrong Email / Password");
+                        }
+                        else {
+                            status = msg;
+                        }
+                    },
+                });
+            }
+        }
+
+        
+        function forgotPassword(){
+
+        }
+
+        function enterZoom(){
+
+        }
+    </script>
+  </body>
+</html>

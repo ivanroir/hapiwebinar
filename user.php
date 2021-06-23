@@ -15,7 +15,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sqlSelect = "SELECT * FROM users WHERE email = '" . $_POST["email"] . "' AND password = '" . $_POST["password"] . "'";
+    $sqlSelect = "SELECT * FROM users WHERE email = '" . $_POST["email"] . "' AND code = '" . $_POST["code"] . "'";
     $result = $conn->query($sqlSelect);
 
     if(!empty($result) && $result->num_rows > 0) {
@@ -30,7 +30,7 @@
 
             $sqlUpdate = "UPDATE users 
             SET status = '$session_id' 
-            WHERE email = '" . $_POST["email"] . "' AND password = '" . $_POST["password"] . "'";
+            WHERE email = '" . $_POST["email"] . "' AND code = '" . $_POST["code"] . "'";
 
             if ($conn->query($sqlUpdate) === TRUE) {
                 echo "1";

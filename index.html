@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="row justify-content-center align-items-center vh-100">
+    <div class="row justify-content-center align-items-center vh-100" id="login">
         <div class="col-lg-5 col-md-8 col-sm-11 col-xs-11">
           <div class="card">
             <div class="card-body">
@@ -99,10 +99,10 @@
                                 <div class="row">
                                     <div class="col-1"></div>
                                     <div class="col-10">
-                                        <input type="text" class="form-control" id="password" placeholder="PASSCODE" required />
+                                        <input type="text" class="form-control" id="code" placeholder="PASSCODE" required />
                                     </div>
                                     <div class="col-1" style="text-align: start">
-                                        <label id="password_required" style="color: red; display: none">*</label>
+                                        <label id="code_required" style="color: red; display: none">*</label>
                                     </div>
                                 </div>
                             </div>
@@ -114,8 +114,8 @@
                         </button>
                     </div>
                     <div class="col-12 mt-3 text-center">
-                        <button class="btn btn-outline-secondary btn-forgot" type="button" id="forgot" onclick="forgotPassword()">
-                            <span class="font-geometos">Forgot your email / password?</span>
+                        <button class="btn btn-outline-secondary btn-forgot" type="button" id="forgot" onclick="forgotcode()">
+                            <span class="font-geometos">Forgot your email / password ?</span>
                         </button>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
             var user_name = true,
                 pword = true;
             var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
+            var code = document.getElementById("code").value;
 
             if (!document.getElementById("email").validity.valid) {
                 document.getElementById("email_required").style.display = "inline";
@@ -150,33 +150,34 @@
                 user_name = true;
             }
 
-            if (!document.getElementById("password").validity.valid) {
-                document.getElementById("password_required").style.display = "inline";
+            if (!document.getElementById("code").validity.valid) {
+                document.getElementById("code_required").style.display = "inline";
                 pword = false;
             } else {
-                document.getElementById("password_required").style.display = "none";
+                document.getElementById("code_required").style.display = "none";
                 pword = true;
             }
 
             if (user_name && pword) {
-                var data = email + "\t" + password;
+                var data = email + "\t" + code;
 
                 $.ajax({
                     url: "https://hapiwebinar.tk/user.php",
                     type: "POST",
                     data: {
                         email: email,
-                        password: password,
+                        code: code,
                     },
                     success: function (msg) {
                         if (msg == "1") {
                             document.getElementById("email").value = "";
-                            document.getElementById("password").value = "";
+                            document.getElementById("code").value = "";
                             localStorage.setItem("email", btoa(email));
-                            localStorage.setItem("code", btoa(password));
+                            localStorage.setItem("code", btoa(code));
                             sessionStorage.setItem("email", btoa(email));
-                            sessionStorage.setItem("code", btoa(password));
+                            sessionStorage.setItem("code", btoa(code));
                             document.getElementById("page").style.display = "block";
+                            document.getElementById("login").style.display = "none";
                         }
                         else if (msg == "0") {
                             alert("Wrong Email / Password");
@@ -190,7 +191,7 @@
         }
 
         
-        function forgotPassword(){
+        function forgotcode(){
 
         }
 

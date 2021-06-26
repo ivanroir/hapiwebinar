@@ -9,10 +9,29 @@
     <style>
         @font-face { font-family: Geometos; src: url('./font/GeometosRounded.ttf'); } 
         @font-face { font-family: MyriadPro; src: url('./font/MyriadProBoldCond.otf');}
-        
+    
+        @media screen and (orientation:portrait) {
+            #portrait {
+                display: block;
+            }
+
+            #landscape {
+                display: none;
+            }
+        }
+
+        @media screen and (orientation:landscape) {
+            #portrait {
+                display: none;
+            }
+
+            #landscape {
+                display: block;
+            }
+        }
+
         body {
             height: 100vh;
-            overflow: hidden;
         }
 
         p { margin: 0;}
@@ -54,75 +73,107 @@
     </style>
   </head>
   <body>
-    <div class="vh-100 vw-100" id="page" style="position: relative; display: none;">
-        <img src="img/LandingPage.png" style="height: 100vh; width: 100vw;" />
-        <div class="row" style="position: absolute; bottom: 0; left: 28vw; ">
-            <a class="mb-2" href="" onclick="enterZoom()" target="_blank">
-                <img class="img" src="img/Enter.png" style="width: 30vw; height: 12vh;" />
-            </a>
-        </div>
-    </div>
 
-    <div class="row justify-content-center align-items-center vh-100" id="login">
-        <div class="col-lg-5 col-md-8 col-sm-11 col-xs-11">
-          <div class="card">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="font-geometos color-black">
-                        <p class="card-text" style="font-size: 2.8vw;">WELCOME</p>
-                        <p class="card-text" style="font-size: 2vw;">TO</p>
-                    </div>
-                    <div class="font-myriadPro">
-                        <p class="card-text" style="font-size: 1.83vw;"><span class="color-gravel">HAPI:</span> <span class="color-green">A COMPREHENSIVE</span></p>
-                        <p class="card-text" style="font-size: 1.45vw;"><span class="color-navy-blue">APPROACH TO EVIDENCE-BASED</span></p>
-                        <p class="card-text" style="font-size: 1.45vw;"><span class="color-green">NUTRITION CARE PRACTIVE FOR</span></p>
-                        <p class="card-text" style="font-size: 1.63vw;"><span class="color-cobalt">EFFECTIVE WOUND HEALING</span></p>
-                        <p class="card-text" style="font-size: 0.9vw;"><span class="color-gravel">A multidisciplinary collaborative care for patients</span></p>
-                        <p class="card-text" style="font-size: 0.9vw;"><span class="color-gravel">with pressure injury</span></p>
-                    </div>
-                    <div class="row justify-content-center align-items-center font-geometos">
-                        <div class="col-12 mt-3">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-1"></div>
-                                    <div class="col-10">
-                                        <input type="text" class="form-control" id="email" placeholder="EMAIL" required />
+    <div id="portrait">
+        <h1>
+            PLEASE USE LANDSCAPE
+        </h1>
+    </div>
+    <div id="landscape">
+        <div class="vh-100 vw-100" id="page" style="position: relative; display: none;">
+            <img src="img/LandingPage.png" style="height: 100vh; width: 100vw;" />
+            <div class="row" style="position: absolute; bottom: 0; left: 28vw; ">
+                <a class="mb-2" href="" onclick="enterZoom()" target="_blank">
+                    <img class="img" src="img/Enter.png" style="width: 30vw; height: 12vh;" />
+                </a>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center vh-100" id="login">
+            <div class="col-lg-5 col-md-8 col-sm-11 col-xs-11">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <!--<div class="font-geometos color-black">
+                                <p class="card-text" style="font-size: 2.8em;">WELCOME</p>
+                                <p class="card-text" style="font-size: 2em;">TO</p>
+                            </div>
+                            <div class="font-myriadPro">
+                                <p class="card-text" style="font-size: 1.83em;"><span class="color-gravel">HAPI:</span> <span class="color-green">A COMPREHENSIVE</span></p>
+                                <p class="card-text" style="font-size: 1.45em;"><span class="color-navy-blue">APPROACH TO EVIDENCE-BASED</span></p>
+                                <p class="card-text" style="font-size: 1.45em;"><span class="color-green">NUTRITION CARE PRACTIVE FOR</span></p>
+                                <p class="card-text" style="font-size: 1.63em;"><span class="color-cobalt">EFFECTIVE WOUND HEALING</span></p>
+                                <p class="card-text" style="font-size: 0.9em;"><span class="color-gravel">A multidisciplinary collaborative care for patients</span></p>
+                                <p class="card-text" style="font-size: 0.9em;"><span class="color-gravel">with pressure injury</span></p>
+                            </div>!-->
+                            <div>
+                                <img src="img/hapi.png" style="height: 50%; width: 50%;" />
+                            </div>
+                            <div class="row justify-content-center align-items-center font-geometos">
+                                <div class="col-12 mt-3">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-1"></div>
+                                            <div class="col-10">
+                                                <input type="text" class="form-control" id="email" placeholder="EMAIL" required />
+                                            </div>
+                                            <div class="col-1" style="text-align: start">   
+                                                <label id="email_required" style="color: red; display: none">*</label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-1" style="text-align: start">   
-                                        <label id="email_required" style="color: red; display: none">*</label>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-1"></div>
+                                            <div class="col-10">
+                                                <input type="text" class="form-control" id="code" placeholder="PASSCODE" required />
+                                            </div>
+                                            <div class="col-1" style="text-align: start">
+                                                <label id="code_required" style="color: red; display: none">*</label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-12 mt-3">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-1"></div>
-                                    <div class="col-10">
-                                        <input type="text" class="form-control" id="code" placeholder="PASSCODE" required />
-                                    </div>
-                                    <div class="col-1" style="text-align: start">
-                                        <label id="code_required" style="color: red; display: none">*</label>
-                                    </div>
-                                </div>
+                            <div class="col-12 mt-3 text-center">
+                                <button class="btn btn-outline-secondary btn-submit" type="button" id="submit" onclick="submit()">
+                                    <span class="font-geometos" style="font-size: 1.63em;">SUBMIT</span>
+                                </button>
+                            </div>
+                            <div class="col-12 mt-3 text-center">
+                                <button class="btn btn-outline-secondary btn-forgot" type="button" id="forgot" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+                                    <span class="font-geometos">Forgot your password ?</span>
+                                </button>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 mt-3 text-center">
-                        <button class="btn btn-outline-secondary btn-submit" type="button" id="submit" onclick="submit()">
-                            <span class="font-geometos" style="font-size: 1.63vw;">SUBMIT</span>
-                        </button>
-                    </div>
-                    <div class="col-12 mt-3 text-center">
-                        <button class="btn btn-outline-secondary btn-forgot" type="button" id="forgot" onclick="forgotcode()">
-                            <span class="font-geometos">Forgot your email / password ?</span>
-                        </button>
                     </div>
                 </div>
             </div>
-          </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="forgotPasswordModalLabel">FORGOT YOUR PASSWORD</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="email" placeholder="EMAIL" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirm" onclick="confirm()">CONFIRM</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script>
@@ -191,8 +242,26 @@
         }
 
         
-        function forgotcode(){
-
+        function confirm(){
+            $.ajax({
+                url: "https://hapiwebinar.tk/forgot_password.php",
+                type: "POST",
+                data: {
+                    email: email,
+                },
+                success: function (msg) {
+                    if (msg == "1") {
+                        document.getElementById("email").value = "";
+                        document.getElementById("code").value = "";
+                    }
+                    else if (msg == "0") {
+                        alert("Wrong Email");
+                    }
+                    else {
+                        status = msg;
+                    }
+                },
+            });
         }
 
         function enterZoom(){

@@ -33,7 +33,6 @@
             echo "Error: " . $sqlUpdate . "<br>" . $conn->error;
         }
     }
-    }
     else {
         echo "0";
     }
